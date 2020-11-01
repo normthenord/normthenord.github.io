@@ -1,13 +1,19 @@
-const API_URL = 'https://dog.ceo/api/breeds/image/random/3';
+let API_URL = 'https://dog.ceo/api/breeds/image/random/3';
 const randomDogsElement = document.querySelector('.random-dogs');
 const loadingElement = document.querySelector('.loading');
 const goButton = document.querySelector('.go-button');
+const dogBreedSelector = document.querySelector('.dog-selector');
 
 loadingElement.style.display = 'none';
 
 async function getRandomDogs() {
+  
   randomDogsElement.innerHTML = '';
   loadingElement.style.display = '';
+  if (dogBreedSelector.value != 'random'){
+    breed = dogBreedSelector.value;
+    API_URL = "https://dog.ceo/api/breed/" + breed + "/images/random/3";
+  }
   const response = await fetch(API_URL);
   const json = await response.json();
   console.log(json.message);
