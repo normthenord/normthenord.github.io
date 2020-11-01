@@ -14,6 +14,9 @@ async function getRandomDogs() {
     breed = dogBreedSelector.value;
     API_URL = "https://dog.ceo/api/breed/" + breed + "/images/random/3";
   }
+  else{
+    API_URL = 'https://dog.ceo/api/breeds/image/random/3';
+  }
   const response = await fetch(API_URL);
   const json = await response.json();
   console.log(json.message);
